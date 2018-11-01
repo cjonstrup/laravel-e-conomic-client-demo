@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TokenRequest;
-use Illuminate\Http\Request;
 
 class EconomicController extends Controller
 {
