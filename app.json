@@ -1,0 +1,23 @@
+{
+  "name": "Laravel 5.7 e-conomic demo",
+  "description": "Free template to get you started",
+  "repository": "https://github.com/cjonstrup/laravel-e-conomic-client-demo.git",
+  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["laravel", "template","e-conomic"],
+  "region": "eu",
+  "addons": [
+    "heroku-postgresql:hobby-dev", "rediscloud:30"
+  ],
+  "env": {
+    "APP_DEBUG": "true",
+    "TZ": "Europe/Copenhagen",
+    "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-php",
+    "APP_KEY": {
+      "description": "random, 32 character string, otherwise these encrypted strings",
+      "value": "base64:ZnsaZC06IgxVmhQLm194NSEM3M3w9b5EvroHAWQ9M40="
+    }
+  },
+  "scripts": {
+    "postdeploy": "php artisan migrate:refresh --seed --force"
+  }
+}
