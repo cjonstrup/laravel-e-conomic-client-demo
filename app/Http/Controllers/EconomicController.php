@@ -36,9 +36,9 @@ class EconomicController extends Controller
         $user->economic_token = $request->get('token');
 
         if ($user->save()) {
-            return Redirect::to('/')->with('status', 'Token updated!');
+            return redirect('/')->with('status', 'Token updated!');
         }
 
-        return Redirect::to('/');
+        return redirect('/');
     }
 }
