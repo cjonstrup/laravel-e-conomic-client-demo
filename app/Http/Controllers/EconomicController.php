@@ -36,9 +36,7 @@ class EconomicController extends Controller
         $user->economic_token = $request->get('token');
 
         if ($user->save()) {
-            Flash::message('Your account has been updated!');
-
-            return Redirect::to('/');
+            return Redirect::to('/')->with('status', 'Token updated!');
         }
 
         return Redirect::to('/');
