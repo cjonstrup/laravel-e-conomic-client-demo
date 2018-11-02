@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TokenRequest;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class EconomicController extends Controller
 {
@@ -28,6 +30,17 @@ class EconomicController extends Controller
 
     public function save(TokenRequest $request)
     {
-        print_r($request->all('token'));
+        /** @var User $user */
+        $user = Auth::user();
+
+        $user->economic_token = $request->get('token');
+
+        if ($user->save()) {
+            Flash::message('Your account has been updated!');
+
+            return Redirect::to('/');
+        }
+
+        return Redirect::to('/');
     }
 }

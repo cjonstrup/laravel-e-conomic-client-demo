@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 /**
  * Class User
  *
- * @var string $economic_token
+ * @property string $economic_token
  */
 class User extends Authenticatable
 {
