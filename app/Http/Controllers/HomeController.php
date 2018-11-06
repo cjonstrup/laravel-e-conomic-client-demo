@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Lenius\Economic\RestClient;
+
 class HomeController extends Controller
 {
     /**
@@ -18,9 +22,30 @@ class HomeController extends Controller
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
+     *
+     * @throws \Lenius\Economic\API\Exception
      */
     public function index()
     {
+        /** @var User $user */
+        $user = Auth::user();
+
+        $client = new RestClient(env('ECONOMIC_SECRET_TOKEN'), $user->economic_token);
+
+        $parms = ['pagesize' => 10];
+
+        $response = $client->request->get('products', $parms);
+
+        $status = $response->httpStatus();
+
+        if ($status == 200) {
+            // Successful request
+            $data = $response->asArray();
+            print_r($data['collection']);
+        }
+
+
+
         return view('home');
     }
 }
