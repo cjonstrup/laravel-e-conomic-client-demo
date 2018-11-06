@@ -13,6 +13,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+                    <pre>
+                    @foreach($products as $product)
+
+                        {{print_r($product)}}
+
+                    @endforeach
+                    </pre>
+
                 </div>
             </div>
         </div>

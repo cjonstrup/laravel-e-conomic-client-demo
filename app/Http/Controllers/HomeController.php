@@ -38,14 +38,16 @@ class HomeController extends Controller
 
         $status = $response->httpStatus();
 
+        $data = [];
+
         if ($status == 200) {
             // Successful request
             $data = $response->asArray();
-            print_r($data['collection']);
+            $data['products'] = $data['collection'];
         }
 
 
 
-        return view('home');
+        return view('home')->with($data);
     }
 }
